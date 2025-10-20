@@ -1,5 +1,5 @@
 import DataTable from "@/components/ui/DataTable";
-import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from "@nextui-org/react";
+import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, useDisclosure } from "@nextui-org/react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { Key, ReactNode, useCallback, useEffect } from "react";
@@ -7,11 +7,14 @@ import { CiMenuKebab } from "react-icons/ci";
 import { COLUMN_LISTS_CATEGORY } from "./Category.constants";
 import useCategory from "./useCategory";
 import InputFile from "@/components/ui/InputFile";
+import AddCategoryModal from "./AddCategoryModal";
 
 const Category = () => {
     const { push, isReady, query } = useRouter();
     const { currentPage, currentLimit, dataCategory, isLoadingCategory, isRefetchingCategory, setURL, handleChangeLimit,
-        handleChangePage, handleSearch, handleClearSearch } = useCategory();
+        handleChangePage, handleSearch, handleClearSearch, refetchCategory } = useCategory();
+
+    const addCategoryModal = useDisclosure();
 
     useEffect(() => {
         if (isReady) {
@@ -71,13 +74,14 @@ const Category = () => {
                 onChangePage={handleChangePage}
                 onChangeSearch={handleSearch}
                 onClearSearch={handleClearSearch}
-                onClickButtonTopContent={() => {}}
+                onClickButtonTopContent={addCategoryModal.onOpen}
                 renderCell={renderCell} 
                 totalPages={dataCategory?.pagination.totalPages}
             />
             )}
-
-            <InputFile name="input" isDropable/>
+            <AddCategoryModal
+             refetchCategory={refetchCategory}
+             {...addCategoryModal}/>
         </section>
     );
 };
