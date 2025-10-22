@@ -1,7 +1,12 @@
 const endpoint = {
-    AUTH: "/auth",
-    CATEGORY: "/category",
-    MEDIA: "/media",
+  AUTH: "/auth",
+  BANNER: "/banners",
+  CATEGORY: "/category",
+  EVENT: "/events",
+  MEDIA: "/media",
+  ORDER: "/orders",
+  REGION: "/regions",
+  TICKET: "/tickets",
 };
 
 export default endpoint;

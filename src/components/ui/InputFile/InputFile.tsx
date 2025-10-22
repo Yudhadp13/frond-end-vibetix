@@ -1,7 +1,7 @@
 import { cn } from "@/utils/cn";
 import { Button, Spinner } from "@nextui-org/react";
 import Image from "next/image";
-import { ChangeEvent, useEffect, useId, useRef, useState } from "react";
+import { ChangeEvent, ReactNode, useEffect, useId, useRef, useState } from "react";
 import { CiSaveUp2, CiTrash } from "react-icons/ci";
 
 interface PropTypes {
@@ -15,10 +15,11 @@ interface PropTypes {
     preview?: string;
     isInvalid?: boolean;
     errorMessage?: string;
+    label?: ReactNode;
 }
 
 const InputFile = (props: PropTypes) => {
-    const { name, isDropable = false, className, isInvalid, errorMessage, isUploading, isDeleting, onUpload, onDelete,preview } = props;
+    const { name, isDropable = false, className, isInvalid, errorMessage, isUploading, isDeleting, onUpload, onDelete, preview, label, } = props;
     const drop = useRef<HTMLLabelElement>(null);
     const dropzoneId = useId();
     const handleDragOver = (e: DragEvent) => {
@@ -58,6 +59,7 @@ const InputFile = (props: PropTypes) => {
 
     return (
         <div>
+            {label}
             <label 
             ref={drop}
             htmlFor={`dropzone-file-${dropzoneId}`} className={cn(
