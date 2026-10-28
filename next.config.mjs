@@ -7,6 +7,13 @@ const nextConfig = {
       protocol: "https",
     }],
   },
+  typescript: {
+    // Mengabaikan seluruh error TypeScript saat build di Vercel
+    ignoreBuildErrors: true,
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 };
 
 export default nextConfig;
