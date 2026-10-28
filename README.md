@@ -76,14 +76,15 @@ This project adopts a decoupled Client-Server architecture and is divided into t
    npm install
 
 4. **Set up Environment Variables:**
-    Create a .env.local file in the root directory and configure your backend API URL:
-    NEXT_PUBLIC_API_URL=http://localhost:5000
+   Create a .env.local file in the root directory and configure your backend API URL:
+   ```env
+   NEXT_PUBLIC_API_URL=http://localhost:5000
 
 5. **Run the development server:**
    ```bash
    npm run dev
 
-   Open http://localhost:3000 with your browser to see the result.
+6. **Open http://localhost:3000 with your browser to see the result.**
 
 ---
 
